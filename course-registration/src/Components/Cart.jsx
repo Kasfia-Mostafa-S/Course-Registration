@@ -20,7 +20,7 @@ const Cart = () => {
           {courses.map((course) => (
             <div
               key={course.id}
-              className="card-container h-full w-80 bg-white rounded-lg"
+              className="h-full w-80 bg-white rounded-lg"
             >
               <img className="p-5" src={course.img_url} alt="" />
               <h3 className="m-2 text-bold text-xl">{course.title}</h3>
@@ -48,8 +48,15 @@ const Cart = () => {
           ))}
         </div>
 
-        <div>
-          <h1>this is cart</h1>
+        <div className="h-full w-80 bg-white rounded-lg p-4">
+          <p className="pb-4 text-blue-600 font-bold">Credit Hour Remaining 7 hr</p>
+          <hr />
+          <h1 className="mt-4 mb-4 font-bold">Course Name</h1>
+          <p className="mt-4 mb-4">1 Introduction to c programming
+2 Introduction to C++ for DSA
+3 Software Engineering</p>
+<hr />
+<p className="mt-4 font-semibold">Total Credit Hour : 13</p>
         </div>
         
       </div>
