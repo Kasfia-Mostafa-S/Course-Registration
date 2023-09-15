@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { BiDollar } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
 import Cart from "./Cart";
@@ -16,7 +17,13 @@ const Course = () => {
   // Course selection in cart
 
   const handleCourse = (course) => {
-    setSelectedCourses([...selectedCourses, course]);
+    const isExist = selectedCourses.find((item) => item.id === course.id);
+
+    if (isExist) {
+     return toast.error("Course Have Been Already Selected");
+    } else {
+      setSelectedCourses([...selectedCourses, course]);
+    }
   };
 
   // created card and cart
@@ -48,6 +55,7 @@ const Course = () => {
 
               <div className="bg-blue-500 m-2 text-white text-center rounded-md h-8 flex items-center justify-center">
                 <button onClick={() => handleCourse(course)}>Select</button>
+                <Toaster position="top-right" reverseOrder={false} />
               </div>
             </div>
           ))}
