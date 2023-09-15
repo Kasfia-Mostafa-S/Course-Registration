@@ -45,12 +45,12 @@ setRemainingHours(totalRemaining)
   return (
     <div>
       <div className="flex m-10 pl-10 gap-10">
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-5">
           {courses.map((course) => (
             <div key={course.id} className="h-full w-80 bg-white rounded-lg">
               <img className="p-5" src={course.img_url} alt="" />
-              <h3 className="m-2 text-bold text-xl">{course.title}</h3>
-              <p className="text-gray-400 m-2 text-sm">{course.description}</p>
+              <h3 className="m-4 text-bold text-xl">{course.title}</h3>
+              <p className="text-gray-400 m-4 text-sm">{course.description}</p>
 
               <div className="flex justify-between text-gray-600 p-4">
                 <div className="flex items-center">
