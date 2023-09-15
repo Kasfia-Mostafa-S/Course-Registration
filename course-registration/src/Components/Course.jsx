@@ -34,7 +34,7 @@ const Course = () => {
       const totalRemaining = 20 - count;
 
       if (count > 20) {
-        toast.warning("Credit hour limitation surpressed");
+        toast.warning("Don't have enough credit hour");
       } else {
         setTotalHours(count);
         setRemainingHours(totalRemaining);
