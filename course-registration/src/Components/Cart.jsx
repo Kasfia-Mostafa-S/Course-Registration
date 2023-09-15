@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 
-const Cart = ({ selectedCourses }) => {
+const Cart = ({ selectedCourses,remainingHours,totalHours }) => {
   return (
     <div>
       <div className="h-fit w-80 bg-white rounded-lg p-4">
         <p className="pb-4 text-blue-600 font-bold">
-          Credit Hour Remaining 7 hr
+          Credit Hour Remaining {remainingHours} hr
         </p>
         <hr />
         <h1 className="mt-4 mb-4 font-bold">Course Name</h1>
@@ -16,7 +16,7 @@ const Cart = ({ selectedCourses }) => {
           </li>
         ))}
         <hr />
-        <p className="mt-4 font-semibold">Total Credit Hour : 13</p>
+        <p className="mt-4 font-semibold">Total Credit Hour : {totalHours}</p>
       </div>
     </div>
   );

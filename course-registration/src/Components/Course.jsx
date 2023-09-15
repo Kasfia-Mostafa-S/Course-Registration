@@ -7,6 +7,8 @@ import Cart from "./Cart";
 const Course = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
+  const [remainingHours, setRemainingHours] = useState(0);
+  const [totalHours, setTotalHours] = useState(0);
 
   useEffect(() => {
     fetch("./course.json")
@@ -19,9 +21,21 @@ const Course = () => {
   const handleCourse = (course) => {
     const isExist = selectedCourses.find((item) => item.id === course.id);
 
+    let hours = 20
+    let count = course.credit_hour;
+
     if (isExist) {
      return toast.error("Course Have Been Already Selected");
     } else {
+
+       selectedCourses.forEach(item =>{
+        count = count + item.credit_hour;
+       })
+
+const totalRemaining = hours - count;
+setTotalHours(count)
+setRemainingHours(totalRemaining)
+
       setSelectedCourses([...selectedCourses, course]);
     }
   };
@@ -61,7 +75,11 @@ const Course = () => {
           ))}
         </div>
 
-        <Cart selectedCourses={selectedCourses}></Cart>
+        <Cart 
+        selectedCourses={selectedCourses}
+        remainingHours={remainingHours}
+        totalHours={totalHours}
+        ></Cart>
       </div>
     </div>
   );
