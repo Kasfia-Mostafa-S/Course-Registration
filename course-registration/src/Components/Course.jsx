@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BiDollar } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
 import Cart from "./Cart";
+import { useEffect, useState } from "react";
 
 const Course = () => {
   const [courses, setCourses] = useState([]);

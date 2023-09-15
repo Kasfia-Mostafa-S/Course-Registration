@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import React from "react";
+import PropTypes from 'prop-types';
 
 const Cart = ({ selectedCourses,remainingHours,totalHours }) => {
   return (
@@ -22,4 +21,9 @@ const Cart = ({ selectedCourses,remainingHours,totalHours }) => {
   );
 };
 
+Cart.propTypes = {
+  selectedCourses: PropTypes.func,
+  remainingHours: PropTypes.func,
+  totalHours: PropTypes.func
+}
 export default Cart;

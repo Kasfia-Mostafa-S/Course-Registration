@@ -1,4 +1,3 @@
-
 import './App.css'
 import Course from './Components/Course'
 import Header from './Components/Header'
@@ -13,4 +12,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
