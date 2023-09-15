@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BiDollar } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
 import Cart from "./Cart";
@@ -7,7 +8,7 @@ import Cart from "./Cart";
 const Course = () => {
   const [courses, setCourses] = useState([]);
   const [selectedCourses, setSelectedCourses] = useState([]);
-  const [remainingHours, setRemainingHours] = useState(0);
+  const [remainingHours, setRemainingHours] = useState(20);
   const [totalHours, setTotalHours] = useState(0);
 
   useEffect(() => {
@@ -21,22 +22,25 @@ const Course = () => {
   const handleCourse = (course) => {
     const isExist = selectedCourses.find((item) => item.id === course.id);
 
-    let hours = 20
     let count = course.credit_hour;
 
     if (isExist) {
-     return toast.error("Course Have Been Already Selected");
+      return toast.success("Course already selected");
     } else {
-
-       selectedCourses.forEach(item =>{
+      selectedCourses.forEach((item) => {
         count = count + item.credit_hour;
-       })
+      });
 
-const totalRemaining = hours - count;
-setTotalHours(count)
-setRemainingHours(totalRemaining)
+      const totalRemaining = 20 - count;
 
-      setSelectedCourses([...selectedCourses, course]);
+      if (count > 20) {
+        toast.warning("Credit hour limitation surpressed");
+      } else {
+        setTotalHours(count);
+        setRemainingHours(totalRemaining);
+
+        setSelectedCourses([...selectedCourses, course]);
+      }
     }
   };
 
@@ -69,16 +73,16 @@ setRemainingHours(totalRemaining)
 
               <div className="bg-blue-500 m-2 text-white text-center rounded-md h-8 flex items-center justify-center">
                 <button onClick={() => handleCourse(course)}>Select</button>
-                <Toaster position="top-right" reverseOrder={false} />
+                <ToastContainer />
               </div>
             </div>
           ))}
         </div>
 
-        <Cart 
-        selectedCourses={selectedCourses}
-        remainingHours={remainingHours}
-        totalHours={totalHours}
+        <Cart
+          selectedCourses={selectedCourses}
+          remainingHours={remainingHours}
+          totalHours={totalHours}
         ></Cart>
       </div>
     </div>

@@ -1,4 +1,3 @@
-
 # Course Registration
 
 IT courses to learn about web development, AI, ML and etc,
